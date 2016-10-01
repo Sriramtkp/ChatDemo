@@ -44,6 +44,17 @@ class LoginViewController: UIViewController {
   @IBAction func userAnonymousBtn(sender: UIButton) {
     print("userAnonymous")
     
+    let storyboardID = UIStoryboard(name: "Main", bundle: nil)
+    let navVC = storyboardID.instantiateViewControllerWithIdentifier("navgationVC") as! UINavigationController
+    
+    let shrdInstance = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    shrdInstance.window?.rootViewController = navVC
+    
+    
+    
+    
+    
   }
   
   
@@ -51,6 +62,13 @@ class LoginViewController: UIViewController {
   @IBAction func googlePlusBtn(sender: UIButton) {
     
     print("Google user")
+    
+    
+    let storyboardID = UIStoryboard(name: "Main", bundle: nil)
+    let navVC = storyboardID.instantiateViewControllerWithIdentifier("navgationVC") as! UINavigationController
+    let shrdInstance = UIApplication.sharedApplication().delegate as! AppDelegate
+    shrdInstance.window?.rootViewController = navVC
+    
     
   }
 
