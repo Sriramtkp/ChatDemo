@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D937867A1D9F4E50006A1981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786791D9F4E50006A1981 /* AppDelegate.swift */; };
-		D937867C1D9F4E50006A1981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D937867B1D9F4E50006A1981 /* ViewController.swift */; };
 		D937867F1D9F4E50006A1981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D937867D1D9F4E50006A1981 /* Main.storyboard */; };
 		D93786811D9F4E50006A1981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93786801D9F4E50006A1981 /* Assets.xcassets */; };
 		D93786841D9F4E50006A1981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93786821D9F4E50006A1981 /* LaunchScreen.storyboard */; };
 		D937868F1D9F4E50006A1981 /* ChatDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D937868E1D9F4E50006A1981 /* ChatDemoTests.swift */; };
 		D937869A1D9F4E50006A1981 /* ChatDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786991D9F4E50006A1981 /* ChatDemoUITests.swift */; };
+		D93786A91D9FC500006A1981 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786A81D9FC500006A1981 /* LoginViewController.swift */; };
+		D93786AB1D9FC540006A1981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786AA1D9FC540006A1981 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		D93786761D9F4E4F006A1981 /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93786791D9F4E50006A1981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D937867B1D9F4E50006A1981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D937867E1D9F4E50006A1981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D93786801D9F4E50006A1981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93786831D9F4E50006A1981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		D93786951D9F4E50006A1981 /* ChatDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93786991D9F4E50006A1981 /* ChatDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDemoUITests.swift; sourceTree = "<group>"; };
 		D937869B1D9F4E50006A1981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D93786A81D9FC500006A1981 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D93786AA1D9FC540006A1981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				D93786791D9F4E50006A1981 /* AppDelegate.swift */,
-				D937867B1D9F4E50006A1981 /* ViewController.swift */,
 				D937867D1D9F4E50006A1981 /* Main.storyboard */,
+				D93786A81D9FC500006A1981 /* LoginViewController.swift */,
+				D93786AA1D9FC540006A1981 /* ChatViewController.swift */,
 				D93786801D9F4E50006A1981 /* Assets.xcassets */,
 				D93786821D9F4E50006A1981 /* LaunchScreen.storyboard */,
 				D93786851D9F4E50006A1981 /* Info.plist */,
@@ -259,7 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D937867C1D9F4E50006A1981 /* ViewController.swift in Sources */,
+				D93786A91D9FC500006A1981 /* LoginViewController.swift in Sources */,
+				D93786AB1D9FC540006A1981 /* ChatViewController.swift in Sources */,
 				D937867A1D9F4E50006A1981 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +491,7 @@
 				D93786A01D9F4E50006A1981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D93786A11D9F4E50006A1981 /* Build configuration list for PBXNativeTarget "ChatDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +500,7 @@
 				D93786A31D9F4E50006A1981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D93786A41D9F4E50006A1981 /* Build configuration list for PBXNativeTarget "ChatDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +509,7 @@
 				D93786A61D9F4E50006A1981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
