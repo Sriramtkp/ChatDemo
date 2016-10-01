@@ -16,6 +16,7 @@
 		D93786A91D9FC500006A1981 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786A81D9FC500006A1981 /* LoginViewController.swift */; };
 		D93786AB1D9FC540006A1981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786AA1D9FC540006A1981 /* ChatViewController.swift */; };
 		D93786AD1D9FC957006A1981 /* ChatLogo2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D93786AC1D9FC957006A1981 /* ChatLogo2.jpg */; };
+		D93786AF1D9FD878006A1981 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93786AE1D9FD878006A1981 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D93786A81D9FC500006A1981 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D93786AA1D9FC540006A1981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D93786AC1D9FC957006A1981 /* ChatLogo2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ChatLogo2.jpg; sourceTree = "<group>"; };
+		D93786AE1D9FD878006A1981 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D93786801D9F4E50006A1981 /* Assets.xcassets */,
 				D93786821D9F4E50006A1981 /* LaunchScreen.storyboard */,
 				D93786851D9F4E50006A1981 /* Info.plist */,
+				D93786AE1D9FD878006A1981 /* GoogleService-Info.plist */,
 			);
 			path = ChatDemo;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				D93786841D9F4E50006A1981 /* LaunchScreen.storyboard in Resources */,
 				D93786811D9F4E50006A1981 /* Assets.xcassets in Resources */,
+				D93786AF1D9FD878006A1981 /* GoogleService-Info.plist in Resources */,
 				D937867F1D9F4E50006A1981 /* Main.storyboard in Resources */,
 				D93786AD1D9FC957006A1981 /* ChatLogo2.jpg in Resources */,
 			);
