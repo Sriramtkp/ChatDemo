@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FPq-Tf-3Me">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RkD-vA-Hws">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Chat Demo-->
         <scene sceneID="6qs-Ip-CH0">
             <objects>
                 <viewController id="FPq-Tf-3Me" customClass="LoginViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,27 +17,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skg-2f-J88">
-                                <rect key="frame" x="244" y="223" width="113" height="30"/>
-                                <state key="normal" title="UserAnonymous"/>
-                                <connections>
-                                    <action selector="userAnonymousBtn:" destination="FPq-Tf-3Me" eventType="touchUpInside" id="HBy-K9-T78"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27Q-JZ-VfP">
-                                <rect key="frame" x="272" y="364" width="57" height="30"/>
-                                <state key="normal" title="google+"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatLogo2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KS8-6g-Bpe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="tintColor" red="0.062745098039215685" green="0.14509803921568629" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27Q-JZ-VfP">
+                                <rect key="frame" x="259" y="434" width="88" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="WMQ-Xk-Nc0"/>
+                                    <constraint firstAttribute="height" constant="45" id="jPC-rX-JdM"/>
+                                </constraints>
+                                <state key="normal" title="google+">
+                                    <color key="titleColor" red="0.078431372550000003" green="0.2470588235" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="googlePlusBtn:" destination="FPq-Tf-3Me" eventType="touchUpInside" id="vFh-2U-URb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skg-2f-J88">
+                                <rect key="frame" x="232" y="293" width="142" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="xB2-pn-p3I"/>
+                                    <constraint firstAttribute="width" constant="142" id="yqN-7E-iFc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="UserAnonymous">
+                                    <color key="titleColor" red="0.078431372550000003" green="0.2470588235" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="userAnonymousBtn:" destination="FPq-Tf-3Me" eventType="touchUpInside" id="HBy-K9-T78"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------OR------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94S-t5-wMh">
+                                <rect key="frame" x="240" y="359" width="115" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="KAb-tq-4vd"/>
+                                    <constraint firstAttribute="width" constant="115" id="RTW-cx-LPx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="94S-t5-wMh" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="-2.5" id="4kD-bi-wSw"/>
+                            <constraint firstItem="KS8-6g-Bpe" firstAttribute="top" secondItem="G0W-qv-TlG" secondAttribute="top" id="9nW-Fa-i3m"/>
+                            <constraint firstItem="94S-t5-wMh" firstAttribute="top" secondItem="Skg-2f-J88" secondAttribute="bottom" constant="21" id="ABC-rF-hxR"/>
+                            <constraint firstItem="27Q-JZ-VfP" firstAttribute="top" secondItem="94S-t5-wMh" secondAttribute="bottom" constant="30" id="JOD-kA-v3z"/>
+                            <constraint firstAttribute="trailing" secondItem="KS8-6g-Bpe" secondAttribute="trailing" id="RDe-66-pTC"/>
+                            <constraint firstItem="35q-QQ-5rK" firstAttribute="top" secondItem="KS8-6g-Bpe" secondAttribute="bottom" id="Xqk-eV-Ojt"/>
+                            <constraint firstItem="KS8-6g-Bpe" firstAttribute="leading" secondItem="G0W-qv-TlG" secondAttribute="leading" id="gg2-oC-KGz"/>
+                            <constraint firstItem="Skg-2f-J88" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="3" id="hhH-eh-18o"/>
+                            <constraint firstItem="27Q-JZ-VfP" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="3" id="qHZ-EZ-vej"/>
+                            <constraint firstItem="35q-QQ-5rK" firstAttribute="top" secondItem="27Q-JZ-VfP" secondAttribute="bottom" constant="121" id="txE-lr-gqZ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat Demo" id="043-cH-w0a"/>
+                    <connections>
+                        <outlet property="gooleBtnOutlet" destination="27Q-JZ-VfP" id="T3O-t2-VN0"/>
+                        <outlet property="loginAnonymOutlet" destination="Skg-2f-J88" id="HK7-vu-CVl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DwK-cT-pBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="335"/>
+            <point key="canvasLocation" x="949" y="335"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="eHH-6t-ggI">
@@ -55,7 +101,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bad-GK-qvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="330"/>
+            <point key="canvasLocation" x="1626" y="330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kCt-hs-oOQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkD-vA-Hws" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jUI-pM-PDX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FPq-Tf-3Me" kind="relationship" relationship="rootViewController" id="T8E-2m-Fhc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59y-sO-QKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="335"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ChatLogo2.jpg" width="940" height="470"/>
+    </resources>
 </document>

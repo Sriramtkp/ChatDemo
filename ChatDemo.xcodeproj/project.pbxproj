@@ -15,6 +15,7 @@
 		D937869A1D9F4E50006A1981 /* ChatDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786991D9F4E50006A1981 /* ChatDemoUITests.swift */; };
 		D93786A91D9FC500006A1981 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786A81D9FC500006A1981 /* LoginViewController.swift */; };
 		D93786AB1D9FC540006A1981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93786AA1D9FC540006A1981 /* ChatViewController.swift */; };
+		D93786AD1D9FC957006A1981 /* ChatLogo2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D93786AC1D9FC957006A1981 /* ChatLogo2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D937869B1D9F4E50006A1981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93786A81D9FC500006A1981 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D93786AA1D9FC540006A1981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D93786AC1D9FC957006A1981 /* ChatLogo2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ChatLogo2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				D937868D1D9F4E50006A1981 /* ChatDemoTests */,
 				D93786981D9F4E50006A1981 /* ChatDemoUITests */,
 				D93786771D9F4E4F006A1981 /* Products */,
+				D93786AC1D9FC957006A1981 /* ChatLogo2.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +241,7 @@
 				D93786841D9F4E50006A1981 /* LaunchScreen.storyboard in Resources */,
 				D93786811D9F4E50006A1981 /* Assets.xcassets in Resources */,
 				D937867F1D9F4E50006A1981 /* Main.storyboard in Resources */,
+				D93786AD1D9FC957006A1981 /* ChatLogo2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
