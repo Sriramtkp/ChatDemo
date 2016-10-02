@@ -122,25 +122,39 @@ class ChatViewController: JSQMessagesViewController {
               
               
               
-              if let textVar = dict["text"] as? String {
-               
-                self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, text: textVar))
+              if mediaTypeVar == "TEXT"{
+                let textVar = dict["text"] as? String
+                 self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, text: textVar))
                 
                 
-              }else{
+              } else if mediaTypeVar == "PHOTO" {
+                
                 
                 let photoVar = dict["fileUrl"] as! String
                 
-                  let dataUrl = NSData(contentsOfURL: NSURL(string: photoVar)!)
+                let dataUrl = NSData(contentsOfURL: NSURL(string: photoVar)!)
+                
                 let picture = UIImage(data: dataUrl!)
                 let photo = JSQPhotoMediaItem(image: picture)
-                self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: photo))
-                
-                }
 
+                
+                  self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: photo))
+                
               
-              
-              
+              } else if mediaTypeVar == "VIDEO" {
+                
+                
+                let fileUrl = dict["fileUrl"] as! String
+                
+                let dataUrl = NSURL(string: fileUrl)
+                
+                let videoItem = JSQVideoMediaItem(fileURL: dataUrl!, isReadyToPlay: true)
+                
+                
+
+                 self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: videoItem))
+                
+              }
               
               
               
@@ -291,6 +305,16 @@ class ChatViewController: JSQMessagesViewController {
   
   @IBAction func logoutBtnAction(sender: UIBarButtonItem) {
     
+    
+    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
+    do {
+      try FIRAuth.auth()?.signOut()
+    }catch let error {
+      
+      print(error)
+    }
+    
+    
     let storyboardID = UIStoryboard(name: "Main", bundle: nil)
     let loginVC = storyboardID.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
     let shrdInstance = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -342,18 +366,18 @@ class ChatViewController: JSQMessagesViewController {
       print("filepath-------\(filePath)")
       
       let data = NSData(contentsOfURL: video)
-      let metaData = FIRStorageMetadata()
-      metaData.contentType = "video/mp4"
-      FIRStorage.storage().reference().child(filePath).putData(data!, metadata: metaData) { (metadata, error) in
+      let metaDataFIRS = FIRStorageMetadata()
+      metaDataFIRS.contentType = "video/mp4"
+      FIRStorage.storage().reference().child(filePath).putData(data!, metadata: metaDataFIRS) { (metadata, error) in
         
         if error != nil{
           print(error?.localizedDescription)
           return
           
         }
-        print("MetaData is \(metaData)")
+        print("MetaData is \(metaDataFIRS)")
         
-        let fileUrl = metaData.downloadURLs![0].absoluteString
+        let fileUrl = metaDataFIRS.downloadURLs![0].absoluteString
         
         let newMsg = self.messageChildRef.childByAutoId()
         
