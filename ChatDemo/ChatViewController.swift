@@ -131,7 +131,7 @@ class ChatViewController: JSQMessagesViewController {
                   let dataUrl = NSData(contentsOfURL: NSURL(string: photoVar)!)
                 let picture = UIImage(data: dataUrl!)
                 let photo = JSQPhotoMediaItem(image: picture)
-                self.messagesArray.append(JSQMessage(senderId: self.senderIdVar, displayName: self.senderNameVar, media: photo))
+                self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: photo))
                 
                 
                 
