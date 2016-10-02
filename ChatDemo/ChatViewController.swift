@@ -109,16 +109,40 @@ class ChatViewController: JSQMessagesViewController {
             if let dict = snapShot.value as? [String : AnyObject] {
               
               
-              let  mediaTypeVar = dict["MediaType"] as! String
+               let  mediaTypeVar = dict["MediaType"] as! String
               print(mediaTypeVar)
               
-           let  senderIdVar = dict["senderId"] as! String
-              let  senderNameVar = dict["senderName"] as! String
+               let  senderIdVar = dict["senderId"] as! String
               
-              let  textVar = dict["text"] as! String
+             let  senderNameVar = dict["senderName"] as! String
+              
+              
+              
+              
+              if let textVar = dict["text"] as? String {
+               
+                self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, text: textVar))
+                
+                
+              }else{
+                
+                let photoVar = dict["fileUrl"] as! String
+                
+                  let dataUrl = NSData(contentsOfURL: NSURL(string: photoVar)!)
+                let picture = UIImage(data: dataUrl!)
+                let photo = JSQPhotoMediaItem(image: picture)
+                self.messagesArray.append(JSQMessage(senderId: self.senderIdVar, displayName: self.senderNameVar, media: photo))
+                
+                
+                
+              }
 
               
-              self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, text: textVar))
+              
+              
+              
+              
+              
             
                 self.collectionView.reloadData()
                 print(self.messagesArray)
