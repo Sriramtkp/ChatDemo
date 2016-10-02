@@ -27,6 +27,11 @@ class ChatViewController: JSQMessagesViewController {
       self.title = "MessagesViewController"
       self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
       
+//      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JSQMessagesViewController.js))
+//      view.addGestureRecognizer(tap)
+      
+
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +39,20 @@ class ChatViewController: JSQMessagesViewController {
         // Dispose of any resources that can be recreated.
     }
     
+//MARK: TextDelegate
+  
+  func endListeningForKeyboard()  {
+    self.view.endEditing(true)
 
+  }
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    
+    self.view.endEditing(true)
+    
+    return true
+  }
+
+  
   //MARK: JSQ funcs
   
   override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
@@ -139,7 +157,7 @@ class ChatViewController: JSQMessagesViewController {
   
   override func collectionView(collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath!) {
     
-    
+    print("didTapMessageBubbleAtIndexPath\(indexPath.row)")
     
   }
   
