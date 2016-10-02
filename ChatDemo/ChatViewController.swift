@@ -9,6 +9,11 @@
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
+import AVKit
+import FirebaseDatabase
+import Firebase
+
+
 class ChatViewController: JSQMessagesViewController {
   
   //vars
@@ -27,8 +32,12 @@ class ChatViewController: JSQMessagesViewController {
       self.title = "MessagesViewController"
       self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
       
-//      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JSQMessagesViewController.js))
-//      view.addGestureRecognizer(tap)
+
+      let rootFBRef = FIRDatabase.database().reference()
+      print("rootFBRef=== \(rootFBRef)")
+      
+      let messageChildRef = rootFBRef.child("messages")
+      print(messageChildRef)
       
 
       
@@ -157,7 +166,25 @@ class ChatViewController: JSQMessagesViewController {
   
   override func collectionView(collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath!) {
     
-    print("didTapMessageBubbleAtIndexPath\(indexPath.row)")
+    print("didTapMessageBubbleAtIndexPath------\(indexPath.item)")
+    
+    let message  = messagesArray[indexPath.item]
+    if message.isMediaMessage {
+      
+      if let url = message.media as? JSQVideoMediaItem{
+        
+      let player = AVPlayer(URL: url.fileURL)
+        
+        let playerVC = AVPlayerViewController()
+        playerVC.player = player
+        
+      
+      self.presentViewController(playerVC, animated: true, completion: nil)
+      }
+
+    }
+    
+    
     
   }
   
