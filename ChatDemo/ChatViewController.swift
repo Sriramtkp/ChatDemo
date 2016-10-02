@@ -8,7 +8,7 @@
 
 import UIKit
 import JSQMessagesViewController
-
+import MobileCoreServices
 class ChatViewController: JSQMessagesViewController {
   
   //vars
@@ -39,24 +39,63 @@ class ChatViewController: JSQMessagesViewController {
   
   override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
     
-    print(text.capitalizedString)
+//    print(text.capitalizedString)
     
     messagesArray.append(JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text))
     collectionView.reloadData()
-    print(messagesArray)
+//    print(messagesArray)
+    
+    
+    self.finishSendingMessage() //to emptifiy the textField
     
   }
   
   override func didPressAccessoryButton(sender: UIButton!) {
     print("AccessoryButton pressed")
     
-    let imgpicker = UIImagePickerController()
-    imgpicker.delegate = self
+    let actionSheet = UIAlertController(title: "Media Message", message: "Choose Media", preferredStyle: .ActionSheet)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alert: UIAlertAction) in
+      
+    }
     
-    self.presentViewController(imgpicker, animated: true, completion: nil)
+    let photoAction = UIAlertAction(title: "Photos", style: .Default) { (alert: UIAlertAction) in
+      self.getMedia(kUTTypeImage)
+      
+    }
+    
+    let videoAction = UIAlertAction(title: "Videos", style: .Default) { (alert: UIAlertAction) in
+      
+      self.getMedia(kUTTypeMovie)
+      
+    }
+    
+        actionSheet.addAction(photoAction)
+    actionSheet.addAction(videoAction)
+    actionSheet.addAction(cancelAction)
+    self.presentViewController(actionSheet, animated: true, completion: nil)
+    
+  }
+  
+  //MARK: getMediaFromImagePicker
+  func getMedia(type: CFString) {
+    
+    print(type)
+    let imgpicker = UIImagePickerController()
+        imgpicker.delegate = self
+//    let mediaImage = [mediaType as String]
+    
+    
+    
+     imgpicker.mediaTypes = [type as String]
+      self.presentViewController(imgpicker, animated: true, completion: nil)
+   
+   
     
     
   }
+  
+  
+  
   
   //MARK: JSQ's CollectionsView funcs
   
@@ -98,7 +137,11 @@ class ChatViewController: JSQMessagesViewController {
     
   }
   
-  
+  override func collectionView(collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath!) {
+    
+    
+    
+  }
   
   
   //MARK: Action
@@ -110,7 +153,6 @@ class ChatViewController: JSQMessagesViewController {
     let loginVC = storyboardID.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
     let shrdInstance = UIApplication.sharedApplication().delegate as! AppDelegate
     shrdInstance.window?.rootViewController = loginVC
-    
     
     
   }
@@ -125,12 +167,24 @@ extension ChatViewController : UIImagePickerControllerDelegate, UINavigationCont
   
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     
-    print("image picked up the info\(info)")
+//    print("image picked up the info\(info)")
     
-    let picture = info[UIImagePickerControllerOriginalImage] as? UIImage
-    let photo  = JSQPhotoMediaItem(image: picture!)
+    if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    
+      let photo  = JSQPhotoMediaItem(image: picture)
     messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
-    self.dismissViewControllerAnimated(true, completion: nil)
+      
+     
+    }
+    else if let video = info[UIImagePickerControllerMediaURL] as? NSURL {
+      
+      let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
+      messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: videoItem))
+      
+      
+    }
+    
+     self.dismissViewControllerAnimated(true, completion: nil)
     collectionView.reloadData()
   }
   
