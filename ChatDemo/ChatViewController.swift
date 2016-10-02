@@ -20,6 +20,7 @@ class ChatViewController: JSQMessagesViewController {
   
   var messagesArray = [JSQMessage]()
   
+  var messageChildRef = FIRDatabase.database().reference().child("messages")
   
   
 
@@ -33,33 +34,49 @@ class ChatViewController: JSQMessagesViewController {
       self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
       
 
-      let rootFBRef = FIRDatabase.database().reference()
-      print("rootFBRef=== \(rootFBRef)")
+//      let rootFBRef = FIRDatabase.database().reference()
+//      print("rootFBRef=== \(rootFBRef)")
+//      
+//      let messageChildRef = rootFBRef.child("messages")
+//      print(messageChildRef)
       
-      let messageChildRef = rootFBRef.child("messages")
-      print(messageChildRef)
+      //to upload to Firebase
 //      messageChildRef.setValue("sriramMacBook")
 //      messageChildRef.childByAutoId().setValue("First Message")
 //      messageChildRef.childByAutoId().setValue("Second Message")
-      messageChildRef.observeEventType(FIRDataEventType.Value){(snapShot: FIRDataSnapshot) in
-        
-        print("snapShot Value------- \(snapShot.value)")
-        
-       if let dictSnapShopt = snapShot.value as? NSDictionary{
-        
-        print("dictSnapShopt\(dictSnapShopt)")
-        }
-        
-      }
+      
+      //to retrieve from firebase  with FIRDataEventType.Value will get all he value
+//      messageChildRef.observeEventType(FIRDataEventType.Value) { (snapShot: FIRDataSnapshot) in
+//        if let dictOneString = snapShot.value as? String{
+//                    print("one message string \(dictOneString)")
+//          
+//                  }
+//      
+//        if let dict = snapShot.value as? NSDictionary {
+//          print(dict)
+//        }
+//      
+//      
+//      }
+      
+      //------ to retieve with FIRDataEventType.ChildAddedto get only one string
+//      messageChildRef.observeEventType(FIRDataEventType.ChildAdded) { (snapShot: FIRDataSnapshot) in
+//        if let dictOneString = snapShot.value as? String{
+//          print("one message string \(dictOneString)")
+//          
+//        }
+//        
+//        if let dict = snapShot.value as? NSDictionary {
+//          print(dict)
+//        }
+//        
+//        
+//      }
+      
+      observeMessage()
       
       
-      
-      
-      
-      
-      
-      
-      
+ //viewDidload
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +97,42 @@ class ChatViewController: JSQMessagesViewController {
     return true
   }
 
+  //MARL : observerFunc
+  
+  func observeMessage() {
+  
+    
+    //------ to retieve with FIRDataEventType.ChildAddedto get only one string
+          messageChildRef.observeEventType(FIRDataEventType.ChildAdded) { (snapShot: FIRDataSnapshot) in
+            print("snapShot.value -----------\(snapShot.value)")
+            
+            if let dict = snapShot.value as? [String : AnyObject] {
+              
+              
+              let  mediaTypeVar = dict["MediaType"] as! String
+              print(mediaTypeVar)
+              
+           let  senderIdVar = dict["senderId"] as! String
+              let  senderNameVar = dict["senderName"] as! String
+              
+              let  textVar = dict["text"] as! String
+//
+//            
+//            
+//            
+//            
+      self.messagesArray.append(JSQMessage(senderId: senderIdVar, senderDisplayName: senderNameVar, text:textVar))
+                collectionView.reloadData()
+                print(self.messagesArray)
+//
+
+             }
+//
+          }
+//
+    
+
+  }
   
   //MARK: JSQ funcs
   
@@ -87,9 +140,14 @@ class ChatViewController: JSQMessagesViewController {
     
 //    print(text.capitalizedString)
     
-    messagesArray.append(JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text))
-    collectionView.reloadData()
-//    print(messagesArray)
+//
+  
+    let newMessage = messageChildRef.childByAutoId()
+    let messageData = ["text": text,"senderId": senderId,  "senderName": senderDisplayName, "MediaType" : "TEXT" ]
+    
+    newMessage.setValue(messageData)
+    
+    
     
     
     self.finishSendingMessage() //to emptifiy the textField
