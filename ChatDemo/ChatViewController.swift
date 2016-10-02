@@ -306,9 +306,11 @@ class ChatViewController: JSQMessagesViewController {
   @IBAction func logoutBtnAction(sender: UIBarButtonItem) {
     
     
-    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
+//    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
     do {
       try FIRAuth.auth()?.signOut()
+      
+      
     }catch let error {
       
       print(error)
@@ -408,15 +410,15 @@ extension ChatViewController : UIImagePickerControllerDelegate, UINavigationCont
     
     if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
     
-      let photo  = JSQPhotoMediaItem(image: picture)
-    messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
+//      let photo  = JSQPhotoMediaItem(image: picture)
+//    messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
       sendMedia(picture, video: nil)
      
     }
     else if let video = info[UIImagePickerControllerMediaURL] as? NSURL {
       
-      let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
-      messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: videoItem))
+//      let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
+//      messagesArray.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: videoItem))
       
       sendMedia(nil, video: video)
     }
