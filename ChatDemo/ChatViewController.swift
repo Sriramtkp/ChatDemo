@@ -116,23 +116,20 @@ class ChatViewController: JSQMessagesViewController {
               let  senderNameVar = dict["senderName"] as! String
               
               let  textVar = dict["text"] as! String
-//
-//            
-//            
-//            
-//            
-      self.messagesArray.append(JSQMessage(senderId: senderIdVar, senderDisplayName: senderNameVar, text:textVar))
-                collectionView.reloadData()
+
+              
+              self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, text: textVar))
+            
+                self.collectionView.reloadData()
                 print(self.messagesArray)
-//
 
+             
              }
-//
-          }
-//
-    
 
-  }
+          }
+
+    //observeMessage
+      }
   
   //MARK: JSQ funcs
   
