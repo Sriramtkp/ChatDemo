@@ -38,8 +38,27 @@ class ChatViewController: JSQMessagesViewController {
       
       let messageChildRef = rootFBRef.child("messages")
       print(messageChildRef)
+//      messageChildRef.setValue("sriramMacBook")
+//      messageChildRef.childByAutoId().setValue("First Message")
+//      messageChildRef.childByAutoId().setValue("Second Message")
+      messageChildRef.observeEventType(FIRDataEventType.Value){(snapShot: FIRDataSnapshot) in
+        
+        print("snapShot Value------- \(snapShot.value)")
+        
+       if let dictSnapShopt = snapShot.value as? NSDictionary{
+        
+        print("dictSnapShopt\(dictSnapShopt)")
+        }
+        
+      }
       
-
+      
+      
+      
+      
+      
+      
+      
       
     }
 
