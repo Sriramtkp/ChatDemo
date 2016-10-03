@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     super.viewWillAppear(animated)
     
-    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
+//    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
     
     FIRAuth.auth()?.addAuthStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
       

@@ -30,10 +30,29 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      self.senderId = "User1"
-      self.senderDisplayName = "Sriram"
+      let currentUser = FIRAuth.auth()?.currentUser
       
-      self.title = "MessagesViewController"
+      if currentUser?.anonymous == true {
+        
+        self.senderDisplayName = "anonymous"
+        
+      }else {
+        self.senderDisplayName = "\(currentUser?.displayName!)"
+        
+      }
+      
+//      let currentUserID = FIRAuth.auth()?.currentUser
+//      print("currentUser--- \(currentUserID)")
+//      
+//      self.senderId = currentUser?.uid
+//      self.senderDisplayName = "Sriram"
+      
+      
+      
+      self.senderId = currentUser?.uid
+//      self.senderDisplayName = "Sriram"
+      
+      self.title = self.senderDisplayName
       self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
       
 
@@ -77,6 +96,7 @@ class ChatViewController: JSQMessagesViewController {
 //      }
       
       observeMessage()
+//      observeUsers()
       
       
  //viewDidload
@@ -102,6 +122,30 @@ class ChatViewController: JSQMessagesViewController {
 
   //MARL : observerFunc
   
+  func observeUsers(id: String) {
+  
+    
+FIRDatabase.database().reference().child("users").child(id).observeEventType(.Value, withBlock: { (snapShot) in
+  
+  print(snapShot.value)
+  
+  if let dict = snapShot.value as? [String : AnyObject]{
+    
+    
+    print("dict in observeUsers--- \(dict)")
+  }
+  
+  }
+  
+    )
+    
+    
+    
+    
+  }
+  
+  
+  
   func observeMessage() {
   
     
@@ -120,7 +164,7 @@ class ChatViewController: JSQMessagesViewController {
              let  senderNameVar = dict["senderName"] as! String
               
               
-              
+              self.observeUsers(self.senderId)
               
               if mediaTypeVar == "TEXT"{
                 let textVar = dict["text"] as? String
@@ -140,6 +184,15 @@ class ChatViewController: JSQMessagesViewController {
                 
                   self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: photo))
                 
+                
+                if self.senderId == self.senderId {
+                  photo.appliesMediaViewMaskAsOutgoing =  true
+                  
+                }else{
+                  photo.appliesMediaViewMaskAsOutgoing = false
+                }
+                
+                
               
               } else if mediaTypeVar == "VIDEO" {
                 
@@ -153,6 +206,16 @@ class ChatViewController: JSQMessagesViewController {
                 
 
                  self.messagesArray.append(JSQMessage(senderId: senderIdVar, displayName: senderNameVar, media: videoItem))
+                
+                
+                if self.senderId == self.senderId {
+                  videoItem.appliesMediaViewMaskAsOutgoing =  true
+                  
+                }else{
+                  videoItem.appliesMediaViewMaskAsOutgoing = false
+                }
+                
+                
                 
               }
               
@@ -223,15 +286,10 @@ class ChatViewController: JSQMessagesViewController {
     let imgpicker = UIImagePickerController()
         imgpicker.delegate = self
 //    let mediaImage = [mediaType as String]
-    
-    
-    
+        
      imgpicker.mediaTypes = [type as String]
       self.presentViewController(imgpicker, animated: true, completion: nil)
    
-   
-    
-    
   }
   
   
@@ -264,9 +322,21 @@ class ChatViewController: JSQMessagesViewController {
   
   override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
     
+    let msgIndxPath = messagesArray[indexPath.item]
     let messageBubble = JSQMessagesBubbleImageFactory()
+
     
-    return messageBubble.outgoingMessagesBubbleImageWithColor(UIColor.darkGrayColor())
+    if msgIndxPath.senderId == self.senderId {
+      return messageBubble.outgoingMessagesBubbleImageWithColor(UIColor.darkGrayColor())
+
+    }else{
+      return messageBubble.outgoingMessagesBubbleImageWithColor(UIColor.blueColor())
+
+    }
+    
+    
+    
+    
     
     
     

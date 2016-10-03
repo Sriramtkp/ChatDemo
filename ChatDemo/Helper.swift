@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import UIKit
 import GoogleSignIn
+import FirebaseDatabase
 
 class Helper {
   
@@ -27,9 +28,17 @@ class Helper {
       if errorInAuth == nil{
         print("AnonUserId---\(anonyUser!.uid)")
         
+        
+        print(anonyUser?.email)
+        print(anonyUser?.displayName)
+        print(anonyUser?.photoURL)
+        ////        print(error?.localizedDescription)
+        
+        
+        let newUser = FIRDatabase.database().reference().child("users").child(anonyUser!.uid)
+        newUser.setValue(["displayName": "\(anonyUser!.displayName)", "id ": "\(anonyUser!.uid)", "profileUrl" : "\(anonyUser!.photoURL)"])
+        
         self.switchViewControllers()
-        
-        
         }else{
         
         print("\(errorInAuth!.localizedDescription)")
@@ -51,13 +60,18 @@ class Helper {
       
       if error == nil{
         
-        self.switchViewControllers()
+        
         
         print(user?.email)
         print(user?.displayName)
-        
+        print(user?.photoURL)
 ////        print(error?.localizedDescription)
-//        return
+        
+        
+        let newUser = FIRDatabase.database().reference().child("users").child(user!.uid)
+        newUser.setValue(["displayName": "\(user!.displayName)", "id ": "\(user!.uid)", "profileUrl" : "\(user!.photoURL)"])
+        
+        self.switchViewControllers()
         
       }else{
         
