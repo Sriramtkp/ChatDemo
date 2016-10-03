@@ -1,25 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FPq-Tf-3Me">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Chat Demo-->
+        <scene sceneID="6qs-Ip-CH0">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="FPq-Tf-3Me" customClass="LoginViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="Fl8-IG-RuB"/>
+                        <viewControllerLayoutGuide type="bottom" id="35q-QQ-5rK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="G0W-qv-TlG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatLogo2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KS8-6g-Bpe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="tintColor" red="0.062745098039215685" green="0.14509803921568629" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27Q-JZ-VfP">
+                                <rect key="frame" x="259" y="434" width="88" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="WMQ-Xk-Nc0"/>
+                                    <constraint firstAttribute="height" constant="45" id="jPC-rX-JdM"/>
+                                </constraints>
+                                <state key="normal" title="google+">
+                                    <color key="titleColor" red="0.078431372550000003" green="0.2470588235" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="googlePlusBtn:" destination="FPq-Tf-3Me" eventType="touchUpInside" id="vFh-2U-URb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skg-2f-J88">
+                                <rect key="frame" x="232" y="293" width="142" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="xB2-pn-p3I"/>
+                                    <constraint firstAttribute="width" constant="142" id="yqN-7E-iFc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="UserAnonymous">
+                                    <color key="titleColor" red="0.078431372550000003" green="0.2470588235" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="userAnonymousBtn:" destination="FPq-Tf-3Me" eventType="touchUpInside" id="HBy-K9-T78"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------OR------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94S-t5-wMh">
+                                <rect key="frame" x="240" y="359" width="115" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="KAb-tq-4vd"/>
+                                    <constraint firstAttribute="width" constant="115" id="RTW-cx-LPx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="94S-t5-wMh" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="-2.5" id="4kD-bi-wSw"/>
+                            <constraint firstItem="KS8-6g-Bpe" firstAttribute="top" secondItem="G0W-qv-TlG" secondAttribute="top" id="9nW-Fa-i3m"/>
+                            <constraint firstItem="94S-t5-wMh" firstAttribute="top" secondItem="Skg-2f-J88" secondAttribute="bottom" constant="21" id="ABC-rF-hxR"/>
+                            <constraint firstItem="27Q-JZ-VfP" firstAttribute="top" secondItem="94S-t5-wMh" secondAttribute="bottom" constant="30" id="JOD-kA-v3z"/>
+                            <constraint firstAttribute="trailing" secondItem="KS8-6g-Bpe" secondAttribute="trailing" id="RDe-66-pTC"/>
+                            <constraint firstItem="35q-QQ-5rK" firstAttribute="top" secondItem="KS8-6g-Bpe" secondAttribute="bottom" id="Xqk-eV-Ojt"/>
+                            <constraint firstItem="KS8-6g-Bpe" firstAttribute="leading" secondItem="G0W-qv-TlG" secondAttribute="leading" id="gg2-oC-KGz"/>
+                            <constraint firstItem="Skg-2f-J88" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="3" id="hhH-eh-18o"/>
+                            <constraint firstItem="27Q-JZ-VfP" firstAttribute="centerX" secondItem="G0W-qv-TlG" secondAttribute="centerX" constant="3" id="qHZ-EZ-vej"/>
+                            <constraint firstItem="35q-QQ-5rK" firstAttribute="top" secondItem="27Q-JZ-VfP" secondAttribute="bottom" constant="121" id="txE-lr-gqZ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat Demo" id="043-cH-w0a"/>
+                    <connections>
+                        <outlet property="gooleBtnOutlet" destination="27Q-JZ-VfP" id="T3O-t2-VN0"/>
+                        <outlet property="loginAnonymOutlet" destination="Skg-2f-J88" id="HK7-vu-CVl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DwK-cT-pBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="949" y="335"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="eHH-6t-ggI">
+            <objects>
+                <viewController id="b9L-Ya-df2" customClass="ChatViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CVh-ix-x5i"/>
+                        <viewControllerLayoutGuide type="bottom" id="fwu-mb-9Vc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4G8-UF-5Z5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wNG-fZ-t3f">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="b6S-fD-XFt">
+                            <connections>
+                                <action selector="logoutBtnAction:" destination="b9L-Ya-df2" id="EhV-aH-SQc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bad-GK-qvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1645" y="335"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2xt-uf-ysk">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="SIW-VR-hAx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fSJ-bY-Vck">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b9L-Ya-df2" kind="relationship" relationship="rootViewController" id="YAS-QA-2O0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HlV-j9-kdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824" y="-322"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ChatLogo2.jpg" width="940" height="470"/>
+    </resources>
 </document>
