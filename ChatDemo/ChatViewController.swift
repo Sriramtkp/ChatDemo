@@ -30,10 +30,29 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      self.senderId = "User1"
-      self.senderDisplayName = "Sriram"
+      let currentUser = FIRAuth.auth()?.currentUser
       
-      self.title = "MessagesViewController"
+      if currentUser?.anonymous == true {
+        
+        self.senderDisplayName = "anonymous"
+        
+      }else {
+        self.senderDisplayName = "\(currentUser?.displayName!)"
+        
+      }
+      
+//      let currentUserID = FIRAuth.auth()?.currentUser
+//      print("currentUser--- \(currentUserID)")
+//      
+//      self.senderId = currentUser?.uid
+//      self.senderDisplayName = "Sriram"
+      
+      
+      
+      self.senderId = currentUser?.uid
+//      self.senderDisplayName = "Sriram"
+      
+      self.title = self.senderDisplayName
       self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
       
 
@@ -77,12 +96,8 @@ class ChatViewController: JSQMessagesViewController {
 //      }
       
       observeMessage()
+//      observeUsers()
       
-      let currentUser = FIRAuth.auth()?.currentUser
-      print("currentUser--- \(currentUser)")
-      
-      self.senderId = currentUser?.uid
-    self.senderDisplayName = "Sriram"
       
  //viewDidload
     }
@@ -107,6 +122,30 @@ class ChatViewController: JSQMessagesViewController {
 
   //MARL : observerFunc
   
+  func observeUsers(id: String) {
+  
+    
+FIRDatabase.database().reference().child("users").child(id).observeEventType(.Value, withBlock: { (snapShot) in
+  
+  print(snapShot.value)
+  
+  if let dict = snapShot.value as? [String : AnyObject]{
+    
+    
+    print("dict in observeUsers--- \(dict)")
+  }
+  
+  }
+  
+    )
+    
+    
+    
+    
+  }
+  
+  
+  
   func observeMessage() {
   
     
@@ -125,7 +164,7 @@ class ChatViewController: JSQMessagesViewController {
              let  senderNameVar = dict["senderName"] as! String
               
               
-              
+              self.observeUsers(self.senderId)
               
               if mediaTypeVar == "TEXT"{
                 let textVar = dict["text"] as? String
