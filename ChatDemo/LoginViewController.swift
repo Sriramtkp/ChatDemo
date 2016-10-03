@@ -50,6 +50,28 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
   
     
+  override func viewWillAppear(animated: Bool) {
+    
+    super.viewWillAppear(animated)
+    
+//    print("FIRAuth.auth()?.currentUser is-----\(FIRAuth.auth()?.currentUser)")
+    
+    FIRAuth.auth()?.addAuthStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
+      
+      if user != nil {
+        print("User is \(user)")
+      }else {
+        print("User Logged Out")
+      }
+      
+      
+    })
+    
+    
+    
+    
+  }
+  
   
 //MARK: Actions
   
